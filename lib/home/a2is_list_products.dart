@@ -1,8 +1,12 @@
-//import 'package:a2is/config.dart';
-//import 'package:flutter/cupertino.dart';
-//import 'package:flutter/material.dart';
-//import 'package:woocommerce/woocommerce.dart';
-/*
+import 'package:a2is/config.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:woocommerce/woocommerce.dart';
+
+String baseUrl = "a2is.fr";
+String consumerKey = "ck_e12e12947fa34c676fc17b6b23cea253858fa506";
+String consumerSecret = "cs_c8ad7192238aaf3c1c2a5f2384802ad5620e12c1";
+
 class listProducts extends StatefulWidget {
   const listProducts({Key? key}) : super(key: key);
 
@@ -15,9 +19,9 @@ class _listProductsState extends State<listProducts> {
   bool isSearching = false;
 
   WooCommerce wooCommerce = WooCommerce(
-      baseUrl: Config.baseUrl,
-      consumerKey: Config.key,
-      consumerSecret: Config.secret,
+      baseUrl: baseUrl,
+      consumerKey: consumerKey,
+      consumerSecret: consumerSecret,
       isDebug: true);
 
   getProducts() async {
@@ -114,4 +118,3 @@ class _listProductsState extends State<listProducts> {
     );
   }
 }
-*/

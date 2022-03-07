@@ -1,51 +1,50 @@
-import 'package:a2is/home/a2is_list_products.dart';
-import 'package:a2is/home/main-a2is_page.dart';
+import 'package:a2is/pages/home_page.dart';
 import 'package:a2is/pages/login_page.dart';
 import 'package:flutter/material.dart';
-/*
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+import 'pages/signup_page.dart';
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainA2iSPage(),
-    );
-  }
-}
-*/
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wordpress Login',
+      title: 'Woocommerce App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.redAccent,
-        accentColor: Colors.cyan[600]
+        fontFamily: 'Poppins',
+        primaryColor: Colors.white,
+        floatingActionButtonTheme: FloatingActionButtonThemeData (
+          elevation: 0,
+          foregroundColor: Colors.white,
+        ),
+        accentColor: Colors.redAccent,
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 22.0, color: Colors.redAccent),
+          headline2: TextStyle(
+            fontSize: 24.0,
+            color: Colors.redAccent,
+          ),
+        ),
       ),
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
+/*
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+ */
 
