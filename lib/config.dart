@@ -4,5 +4,5 @@ class Config {
   static String url = "https://www.a2is.fr/wp-json/wc/v3";
   static String customerURL = "customers";
   static String tokenURL = "https://www.a2is.fr/wp-json/jwt-auth/v1/token";
-  static String categoriesURL = "products/categories";
+  static String categoriesURL = "/products/categories";
 }

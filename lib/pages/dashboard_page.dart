@@ -1,3 +1,4 @@
+import 'package:a2is/widgets/widget_home_categories.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,8 @@ class _DashboardState extends State<Dashboard> {
         color: Colors.white,
         child: ListView(
           children: [
-
+            imageCarousel(context),
+            WidgetCategories()
           ],
         ),
       ),
@@ -31,6 +33,20 @@ class _DashboardState extends State<Dashboard> {
         boxFit: BoxFit.none,
         autoplay: true,
         showIndicator: false,
+        images: [
+          FittedBox(
+            child: Image.asset('lib/images/diapo1-min.png'),
+            fit: BoxFit.fill,
+          ),
+          FittedBox(
+            child: Image.asset('lib/images/diapo2-min.png'),
+            fit: BoxFit.fill,
+          ),
+          FittedBox(
+            child: Image.asset('lib/images/diapo3-min.png'),
+            fit: BoxFit.fill,
+          ),
+        ],
       ),
     );
   }

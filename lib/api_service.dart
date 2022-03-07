@@ -66,12 +66,10 @@ class APIService{
   }
 
   Future<List<Category>> getCategories() async {
-    List<Category> data = <Category>[];
+    List<Category> data = new List<Category>();
 
     try {
-      String url = Config.url +
-    Config.categoriesURL +
-    "?consumer_key=${Config.key}&consumer_secret=${Config.secret}";
+      String url = Config.url + Config.categoriesURL + "?consumer_key=${Config.key}&consumer_secret=${Config.secret}";
       var response = await Dio().get(
         url,
         options: new Options(
