@@ -18,6 +18,7 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
   @override
   void initState() {
     apiService = new APIService();
+
     super.initState();
   }
 
@@ -60,6 +61,7 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
             return _buildCategoryList(model.data);
           }
 
+          return _buildCategoryList(model.data);
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -90,7 +92,8 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
                     height: 80,
                     alignment: Alignment.center,
                     child: Image.Image.network(
-                      data.image.url,
+                      //data.image.url,
+                      "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg",
                       height: 80,
                     ),
                     decoration: BoxDecoration(
@@ -107,6 +110,7 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
                   Row(
                     children: [
                       Text(data.categoryName.toString()),
+                      //Text("catg"),
                       Icon(
                         Icons.keyboard_arrow_right,
                         size: 14,

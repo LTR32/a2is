@@ -1,4 +1,6 @@
+import 'package:a2is/config.dart';
 import 'package:a2is/widgets/widget_home_categories.dart';
+import 'package:a2is/widgets/widget_home_products.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,9 @@ class _DashboardState extends State<Dashboard> {
         child: ListView(
           children: [
             imageCarousel(context),
-            WidgetCategories()
+            WidgetCategories(),
+            WidgetHomeProducts(labelName: "Nos meilleurs offres !", tagId: Config.todayOffersTagId,),
+            WidgetHomeProducts(labelName: "Nos meilleurs ventes !", tagId: Config.topSellingProductsTagId,)
           ],
         ),
       ),
@@ -26,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
   Widget imageCarousel(BuildContext context) {
     return new Container(
       width: MediaQuery.of(context).size.width,
-      height: 200.0,
+      height: 170.0,
       child: new Carousel(
         overlayShadow: false,
         borderRadius: true,
