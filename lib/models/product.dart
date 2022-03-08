@@ -23,7 +23,7 @@ class Product {
     this.regularPrice,
     this.salePrice,
     this.stockStatus
-});
+  });
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -33,24 +33,36 @@ class Product {
     sku = json['sku'];
     price = json['price'];
     regularPrice = json['regular_price'];
-    salePrice = json['sale_price'];
+    salePrice =
+    json['sale_price'] != "" ? json['sale_price'] : json['regular_price'];
 
     stockStatus = json['stock_status'];
-    if(json['categories'] != null) {
+    if (json['categories'] != null) {
       categories = new List<Categories>();
       json['categories'].forEach((v) {
         categories.add(new Categories.fromJson(v));
       });
     }
-    if(json['images'] != null) {
+    if (json['images'] != null) {
       images = new List<Images>();
       json['images'].forEach((v) {
         images.add(new Images.fromJson(v));
       });
     }
   }
-}
 
+
+  calculateDiscount() {
+    double regularPrice = double.parse(this.regularPrice);
+    double salePrice = this.salePrice != ""
+        ? double.parse(this.salePrice)
+        : regularPrice;
+    double discount = regularPrice - salePrice;
+    double disPercent = (discount / regularPrice) * 100;
+
+    return disPercent.round();
+  }
+}
 class Categories {
   int id;
   String name;

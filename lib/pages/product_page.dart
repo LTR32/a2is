@@ -1,19 +1,15 @@
 // @dart=2.9
 
+import 'dart:async';
+
 import 'package:a2is/api_service.dart';
 import 'package:a2is/pages/base_page.dart';
+import 'package:a2is/provider/products_provider.dart';
 import 'package:a2is/widgets/widget_product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/product.dart';
-
-class SortBy {
-  String value;
-  String text;
-  String sortOrder;
-
-  SortBy(this.value, this.text, this.sortOrder);
-}
 
 class ProductPage extends BasePage {
   ProductPage({Key key, this.categoryId}) : super(key: key);
@@ -25,19 +21,49 @@ class ProductPage extends BasePage {
 }
 
 class _ProductPageState extends BasePageState<ProductPage> {
-  APIService apiService;
+  int _page = 1;
+  ScrollController _scrollController = new ScrollController();
+
+  final _searchQuery = new TextEditingController();
+  Timer _debounce;
+
   final _sortByOptions = [
     SortBy("popularity", "Popularité", "asc"),
     SortBy("modified", "Récent", "asc"),
-    SortBy("price", "Prix: décroissant", "desc"),
+    SortBy("price", "Prix décroissant", "desc"),
     SortBy("price", "Prix croissant", "asc")
   ];
 
   @override
   void initState(){
-    apiService = new APIService();
+    var productList = Provider.of<ProductProvider>(context, listen: false);
+    productList.resetStreams();
+    productList.setLoadingState(LoadMoreStatus.INITIAL);
+    productList.fetchProducts(_page);
+
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        productList.setLoadingState(LoadMoreStatus.LOADING);
+        productList.fetchProducts(++_page);
+      }
+    });
+
+    _searchQuery.addListener(_onSearchChange);
 
     super.initState();
+  }
+
+  _onSearchChange(){
+    var productList = Provider.of<ProductProvider>(context, listen: false);
+
+    if(_debounce?.isActive?? false) _debounce.cancel();
+
+    _debounce = Timer(const Duration(milliseconds: 5000), () {
+      productList.resetStreams();
+      productList.setLoadingState(LoadMoreStatus.INITIAL);
+      productList.fetchProducts(_page, strSearch: _searchQuery.text);
+    }
+    );
   }
 
   @override
@@ -46,11 +72,13 @@ class _ProductPageState extends BasePageState<ProductPage> {
   }
 
   Widget _productsList(){
-    return new FutureBuilder(
-        future: APIService().getProducts(),
-        builder: (BuildContext context, AsyncSnapshot<List<Product>> model) {
-          if(model.hasData) {
-            return _buildList(model.data);
+    return new Consumer<ProductProvider>(
+        builder: (context, productsModel, child) {
+          if(productsModel.allProducts != null &&
+          productsModel.allProducts.length > 0 &&
+          productsModel.getLoadMoreStatus() != LoadMoreStatus.INITIAL) {
+            return _buildList(productsModel.allProducts,
+                productsModel.getLoadMoreStatus() == LoadMoreStatus.LOADING);
           }
 
           return Center(
@@ -60,13 +88,14 @@ class _ProductPageState extends BasePageState<ProductPage> {
     );
   }
 
-  Widget _buildList(List<Product> items) {
+  Widget _buildList(List<Product> items, bool isLoadMore) {
     return Column(
       children: [
       _productFilters(),
       Flexible(
           child: GridView.count(
             shrinkWrap: true,
+            controller: _scrollController,
             crossAxisCount: 2,
             physics: ClampingScrollPhysics(),
             scrollDirection: Axis.vertical,
@@ -76,7 +105,16 @@ class _ProductPageState extends BasePageState<ProductPage> {
               );
             }).toList(),
           ),
-      )
+      ),
+        Visibility(
+            child: Container(
+              padding: EdgeInsets.all(5),
+              height: 35.0,
+              width: 35.0,
+              child: CircularProgressIndicator(),
+            ),
+          visible: isLoadMore,
+        )
     ],
     );
   }
@@ -89,6 +127,7 @@ class _ProductPageState extends BasePageState<ProductPage> {
         children: [
           Flexible(
               child: TextField(
+                controller: _searchQuery,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
                   hintText: "Rechercher",
@@ -108,7 +147,10 @@ class _ProductPageState extends BasePageState<ProductPage> {
             ),
             child: PopupMenuButton(
               onSelected: (sortBy) {
-
+                var productsList = Provider.of<ProductProvider>(context, listen: false);
+                productsList.resetStreams();
+                productsList.setSortOrder(sortBy);
+                productsList.fetchProducts(_page);
               },
               itemBuilder: (BuildContext context) {
                 return _sortByOptions.map((item) {
