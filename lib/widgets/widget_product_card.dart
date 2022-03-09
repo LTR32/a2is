@@ -1,5 +1,6 @@
 // @dart=2.9
 
+import 'package:a2is/pages/product_details.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
@@ -11,7 +12,23 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var price = double.parse(data.salePrice);
+    price = price * 1.2;
+    var regularPrice = double.parse(data.regularPrice);
+    regularPrice = regularPrice * 1.2;
+
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProductDetails(
+                    product: data,
+                  ),
+              ),
+          );
+        },
+     child: Container(
       decoration: BoxDecoration(
         color: Color(0XFFFFFFFF),
         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -71,7 +88,7 @@ class ProductCard extends StatelessWidget {
                   data.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 11,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
@@ -82,9 +99,9 @@ class ProductCard extends StatelessWidget {
                     Visibility(
                         visible: data.salePrice != data.regularPrice,
                         child: Text(
-                          '${data.regularPrice} €',
+                          '${regularPrice.toStringAsFixed(2)} €',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             decoration: TextDecoration.lineThrough,
                             color: Colors.redAccent,
                             fontWeight: FontWeight.bold,
@@ -92,9 +109,9 @@ class ProductCard extends StatelessWidget {
                         ),
                     ),
                     Text(
-                      '${data.salePrice} €',
+                      '${price.toStringAsFixed(2)} €',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -106,6 +123,7 @@ class ProductCard extends StatelessWidget {
           ],
         ),
       ),
+     )
     );
   }
 }
