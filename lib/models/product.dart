@@ -13,6 +13,7 @@ class Product {
   List<Images> images;
   List<Categories> categories;
   List<Attributes> attributes;
+  //List<int> relatedIds;
 
   Product({
     this.id,
@@ -24,7 +25,8 @@ class Product {
     this.regularPrice,
     this.salePrice,
     this.stockStatus,
-    this.attributes
+    this.attributes,
+    //this.relatedIds,
   });
 
   Product.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class Product {
     json['sale_price'] != "" ? json['sale_price'] : json['regular_price'];
 
     stockStatus = json['stock_status'];
+    //relatedIds = json['cross_sell_ids'].cast<int>();
     if (json['categories'] != null) {
       categories = new List<Categories>();
       json['categories'].forEach((v) {

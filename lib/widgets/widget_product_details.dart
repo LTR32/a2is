@@ -1,5 +1,6 @@
 //@dart=2.9
 import 'package:a2is/utils/custom_stepper.dart';
+import 'package:a2is/utils/expand_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -86,9 +87,22 @@ class ProductDetailsWidget extends StatelessWidget {
                         value: this.qty,
                         onChanged: (value){
                           print(value);
-                        })
+                        },
+                    ),
+                    FlatButton(
+                        onPressed: (){},
+                        child: Text(
+                          "Ajouter au panier",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      color: Colors.redAccent,
+                      padding: EdgeInsets.all(15),
+                      shape: StadiumBorder(),
+                    )
                   ],
-                )
+                ),
+                SizedBox(height: 5,),
+                ExpandText(labelHeader: "Détails du produit", shortDesc: data.shortDescription, desc: data.description,)
               ],
             ),
           ],

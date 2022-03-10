@@ -35,10 +35,16 @@ class BasePageState<T extends BasePage> extends State<T> {
       elevation: 0,
       backgroundColor: Colors.redAccent,
       automaticallyImplyLeading: true,
-      title: Text(
-        "A2iS",
+      title: Text(""
+          "A2iS",
         style: TextStyle(color: Colors.white),
       ),
+      actions: [
+        Icon(Icons.notifications_none, color: Colors.white,),
+        SizedBox(width: 10,),
+        Icon(Icons.shopping_cart, color: Colors.white,),
+        SizedBox(width: 10,)
+      ],
     );
   }
 }

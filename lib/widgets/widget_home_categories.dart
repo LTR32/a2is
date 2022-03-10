@@ -77,7 +77,7 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          itemCount: categories.length,
+          itemCount: 5,
           itemBuilder: (context, index) {
             var data = categories[index];
             return GestureDetector(
