@@ -13,10 +13,9 @@ class SortBy {
   SortBy(this.value, this.text, this.sortOrder);
 }
 
-enum LoadMoreStatus{INITIAL, LOADING, STABLE}
+enum LoadMoreStatus { INITIAL, LOADING, STABLE }
 
-class ProductProvider with ChangeNotifier{
-
+class ProductProvider with ChangeNotifier {
   APIService _apiService;
   List<Product> _productList;
   SortBy _sortBy;
@@ -24,9 +23,11 @@ class ProductProvider with ChangeNotifier{
   int pageSize = 10;
 
   List<Product> get allProducts => _productList;
+
   double get totalRecords => _productList.length.toDouble();
 
   LoadMoreStatus _loadMoreStatus = LoadMoreStatus.STABLE;
+
   getLoadMoreStatus() => _loadMoreStatus;
 
   ProductProvider() {
@@ -49,7 +50,8 @@ class ProductProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  fetchProducts(pageNumber, {
+  fetchProducts(
+    pageNumber, {
     String strSearch,
     String tagName,
     String categoryId,
@@ -66,7 +68,7 @@ class ProductProvider with ChangeNotifier{
       sortOrder: this._sortBy.sortOrder,
     );
 
-    if(itemModel.length > 0) {
+    if (itemModel.length > 0) {
       _productList.addAll(itemModel);
     }
 

@@ -60,4 +60,16 @@ class CartProvider with ChangeNotifier {
       notifyListeners();
     });
   }
+
+  fetchCartItems() async {
+    if(_cartItems == null) resetStreams();
+
+    await _apiService.getCartItems().then((cartResponseModel){
+      if(cartResponseModel.data != null) {
+        _cartItems.addAll(cartResponseModel.data);
+      }
+
+      notifyListeners();
+    });
+  }
 }

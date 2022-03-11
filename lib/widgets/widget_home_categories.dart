@@ -60,8 +60,6 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
           if(model.hasData){
             return _buildCategoryList(model.data);
           }
-
-          return _buildCategoryList(model.data);
           return Center(
             child: CircularProgressIndicator(),
           );
