@@ -40,10 +40,13 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 16, top: 10, right: 10),
-                child: Text(
-                  'Voir tout',
-                  style: TextStyle(color: Colors.redAccent),
-                ),
+                child: InkWell(
+                  child: Text(
+                    'Voir tous les produits',
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductPage()));},
+              )
               )
             ],
           ),

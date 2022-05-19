@@ -90,6 +90,10 @@ class _WidgetHomeProductsState extends State<WidgetHomeProducts> {
           itemCount: items.length,
           itemBuilder: (context, index) {
             var data = items[index];
+            var price = double.parse(data.salePrice);
+            price = price * 1.2;
+            var regularPrice = double.parse(data.regularPrice);
+            regularPrice = regularPrice * 1.2;
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -134,7 +138,7 @@ class _WidgetHomeProductsState extends State<WidgetHomeProducts> {
                   child: Row(
                     children: [
                       Text(
-                        '${data.regularPrice} €',
+                        '${regularPrice.toStringAsFixed(2)} €',
                         style: TextStyle(
                           fontSize: 14,
                           decoration: TextDecoration.lineThrough,
@@ -143,7 +147,7 @@ class _WidgetHomeProductsState extends State<WidgetHomeProducts> {
                         ),
                       ),
                       Text(
-                        '${data.salePrice} €',
+                        '${price.toStringAsFixed(2)} €',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,

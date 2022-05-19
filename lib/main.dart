@@ -1,3 +1,4 @@
+import 'package:a2is/connectivity_provider.dart';
 import 'package:a2is/pages/base_page.dart';
 import 'package:a2is/pages/cart_page.dart';
 import 'package:a2is/pages/home_page.dart';
@@ -10,6 +11,7 @@ import 'package:a2is/provider/products_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'no_internet.dart';
 import 'pages/signup_page.dart';
 
 void main() {
@@ -37,6 +39,10 @@ class MyApp extends StatelessWidget {
             create: (context) => CartProvider(),
             child: CartPage(),
           ),
+          ChangeNotifierProvider(
+              create: (context) => ConnectivityProvider(),
+              child: HomePage(),
+              )
         ],
         child: MaterialApp(
           title: "A2iS",

@@ -19,8 +19,8 @@ class _DashboardState extends State<Dashboard> {
           children: [
             imageCarousel(context),
             WidgetCategories(),
-            WidgetHomeProducts(labelName: "Nos meilleurs offres !", tagId: Config.todayOffersTagId,),
-            WidgetHomeProducts(labelName: "Nos meilleurs ventes !", tagId: Config.topSellingProductsTagId,)
+            //WidgetHomeProducts(labelName: "Nos meilleurs offres !", tagId: Config.todayOffersTagId,),
+            //WidgetHomeProducts(labelName: "Nos meilleurs ventes !", tagId: Config.topSellingProductsTagId,)
           ],
         ),
       ),
