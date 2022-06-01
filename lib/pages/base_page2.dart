@@ -6,14 +6,14 @@ import 'package:a2is/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BasePage extends StatefulWidget {
-  BasePage({Key key}) : super(key: key);
+class BasePage2 extends StatefulWidget {
+  BasePage2({Key key}) : super(key: key);
 
   @override
   BasePageState createState() => BasePageState();
 }
 
-class BasePageState<T extends BasePage> extends State<T> {
+class BasePageState<T extends BasePage2> extends State<T> {
   bool isApiCallProcess = false;
 
   @override
@@ -24,38 +24,17 @@ class BasePageState<T extends BasePage> extends State<T> {
     return Consumer<LoaderProvider>
       ( builder: (context, loaderModel, child) {
       return Scaffold(
-        appBar: _buildAppBar(),
         body: ProgressHUD(
           child: pageUI(),
           inAsyncCall: loaderModel.isApiCallProcess,
           opacity: 0.3,
         ),
       );
-      }
+    }
     );
   }
 
   Widget pageUI() {
     return null;
-  }
-
-  Widget _buildAppBar() {
-    return AppBar(
-      centerTitle: true,
-      brightness: Brightness.dark,
-      elevation: 0,
-      backgroundColor: AppColors.mainColor,
-      automaticallyImplyLeading: true,
-      title: Text(""
-          "A2iS",
-        style: TextStyle(color: Colors.white),
-      ),
-      actions: [
-        Icon(Icons.notifications_none, color: Colors.white,),
-        SizedBox(width: 10,),
-        Icon(Icons.shopping_cart, color: Colors.white,),
-        SizedBox(width: 10,)
-      ],
-    );
   }
 }

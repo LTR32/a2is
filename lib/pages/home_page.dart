@@ -4,6 +4,7 @@ import 'package:a2is/connectivity_provider.dart';
 import 'package:a2is/no_internet.dart';
 import 'package:a2is/pages/cart_page.dart';
 import 'package:a2is/pages/product_page.dart';
+import 'package:a2is/pages/useful_Links.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -85,14 +86,14 @@ class _HomePageState extends State<HomePage> {
                       )
                   ),
                   ListTile(
-                      leading: const Icon(Icons.label_important),
-                      title: InkWell(
-                        child: Text(
-                            'Mentions légales'
-                        ),
-                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>LegalMentionsPage()));},
-                      )
-                  ),
+                    leading: const Icon(Icons.label_important),
+                    title: InkWell(
+                      child: Text(
+                        "Liens utiles"
+                      ),
+                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>UsefulLinksPage())); },
+                    ),
+                  )
                 ],
               ),
             )

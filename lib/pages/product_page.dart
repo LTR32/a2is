@@ -3,7 +3,8 @@
 import 'dart:async';
 
 import 'package:a2is/api_service.dart';
-import 'package:a2is/pages/base_page.dart';
+//import 'package:a2is/pages/base_page.dart';
+import 'package:a2is/pages/base_page2.dart';
 import 'package:a2is/provider/products_provider.dart';
 import 'package:a2is/widgets/widget_product_card.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../models/product.dart';
 
-class ProductPage extends BasePage {
+class ProductPage extends BasePage2 {
   ProductPage({Key key, this.categoryId}) : super(key: key);
 
   int categoryId;
