@@ -34,3 +34,4 @@ class Image {
     url = json['src'];
   }
 }
+
