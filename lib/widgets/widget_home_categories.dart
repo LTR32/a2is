@@ -7,6 +7,8 @@ import '../api_service.dart';
 import 'package:a2is/models/category.dart';
 import 'package:flutter/src/widgets/image.dart' as Image;
 
+import '../utils/colors.dart';
+
 class WidgetCategories extends StatefulWidget {
   @override
   _WidgetCategoriesState createState() => _WidgetCategoriesState();
@@ -43,7 +45,7 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
                 child: InkWell(
                   child: Text(
                     'Voir tous les produits',
-                    style: TextStyle(color: Colors.redAccent),
+                    style: TextStyle(color: AppColors.mainColor),
                   ),
                   onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductPage()));},
               )

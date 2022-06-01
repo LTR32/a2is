@@ -7,6 +7,8 @@ import 'package:a2is/utils/form_helper.dart';
 import 'package:a2is/utils/validator_service.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/colors.dart';
+
 class SignupPage extends StatefulWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -31,7 +33,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: AppColors.mainColor,
         automaticallyImplyLeading: true,
         title: Text("S'inscrire"),
       ),

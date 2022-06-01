@@ -3,6 +3,8 @@ import 'package:a2is/utils/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:a2is/models/cart_response_model.dart';
 
+import '../utils/colors.dart';
+
 class CartProduct extends StatelessWidget {
   CartProduct({this.data});
 
@@ -66,7 +68,7 @@ class CartProduct extends StatelessWidget {
                 ),
                 onPressed: () {},
                 padding: EdgeInsets.all(8),
-                color: Colors.redAccent,
+                color: AppColors.mainColor,
                 shape: StadiumBorder(),
               ),
             ],

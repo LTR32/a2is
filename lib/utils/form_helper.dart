@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
+
 class FormHelper {
   static Widget textInput(
       BuildContext context,
@@ -87,11 +89,11 @@ class FormHelper {
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.redAccent,
+              color: AppColors.mainColor,
               style: BorderStyle.solid,
               width: 1.0,
             ),
-            color: Colors.redAccent,
+            color: AppColors.mainColor,
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Row(

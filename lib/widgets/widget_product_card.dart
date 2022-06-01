@@ -4,6 +4,7 @@ import 'package:a2is/pages/product_details.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../utils/colors.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard({Key key, this.data}) : super(key: key);
@@ -103,7 +104,7 @@ class ProductCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             decoration: TextDecoration.lineThrough,
-                            color: Colors.redAccent,
+                            color: AppColors.mainColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

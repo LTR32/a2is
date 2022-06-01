@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:a2is/models/product.dart';
 
 import '../api_service.dart';
+import '../utils/colors.dart';
 
 class WidgetHomeProducts extends StatefulWidget {
   WidgetHomeProducts({Key key, this.labelName, this.tagId}) : super(key: key);
@@ -52,7 +53,7 @@ class _WidgetHomeProductsState extends State<WidgetHomeProducts> {
     onPressed: () {},
     child: Text(
     'Voir tout',
-    style: TextStyle(color: Colors.redAccent),
+    style: TextStyle(color: AppColors.mainColor),
     ),
     ),
     )
@@ -142,7 +143,7 @@ class _WidgetHomeProductsState extends State<WidgetHomeProducts> {
                         style: TextStyle(
                           fontSize: 14,
                           decoration: TextDecoration.lineThrough,
-                          color: Colors.redAccent,
+                          color: AppColors.mainColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

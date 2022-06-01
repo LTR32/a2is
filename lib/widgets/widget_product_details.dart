@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
+import '../utils/colors.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   ProductDetailsWidget({Key key, this.data}) : super(key: key);
@@ -120,7 +121,7 @@ class ProductDetailsWidget extends StatelessWidget {
                           },
                         );
                       },
-                      color: Colors.redAccent,
+                      color: AppColors.mainColor,
                       padding: EdgeInsets.all(15),
                       shape: StadiumBorder(),
                     )

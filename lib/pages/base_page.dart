@@ -2,6 +2,7 @@
 
 import 'package:a2is/provider/loader_provider.dart';
 import 'package:a2is/utils/ProgressHUD.dart';
+import 'package:a2is/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,7 @@ class BasePageState<T extends BasePage> extends State<T> {
     return Consumer<LoaderProvider>
       ( builder: (context, loaderModel, child) {
       return Scaffold(
-        appBar: _buildAppBar(),
+        //appBar: _buildAppBar(),
         body: ProgressHUD(
           child: pageUI(),
           inAsyncCall: loaderModel.isApiCallProcess,
@@ -38,12 +39,12 @@ class BasePageState<T extends BasePage> extends State<T> {
     return null;
   }
 
-  Widget _buildAppBar() {
+  /*Widget _buildAppBar() {
     return AppBar(
       centerTitle: true,
       brightness: Brightness.dark,
       elevation: 0,
-      backgroundColor: Colors.redAccent,
+      backgroundColor: AppColors.mainColor,
       automaticallyImplyLeading: true,
       title: Text(""
           "A2iS",
@@ -56,5 +57,5 @@ class BasePageState<T extends BasePage> extends State<T> {
         SizedBox(width: 10,)
       ],
     );
-  }
+  }*/
 }

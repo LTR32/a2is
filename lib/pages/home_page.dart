@@ -3,10 +3,12 @@
 import 'package:a2is/connectivity_provider.dart';
 import 'package:a2is/no_internet.dart';
 import 'package:a2is/pages/cart_page.dart';
+import 'package:a2is/pages/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/cart_icons.dart';
+import '../utils/colors.dart';
 import 'dashboard_page.dart';
 import 'mentions.dart';
 import 'notifications_page.dart';
@@ -25,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _widgetList = [
     Dashboard(),
-    CartPage(),
+    ProductPage(),
     Dashboard(),
     Dashboard()
   ];
@@ -42,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
               DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: AppColors.mainColor,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -107,9 +109,9 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              CartIcons.cart,
+              CartIcons.search,
             ),
-            label: 'Panier'
+            label: 'Boutique'
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -124,7 +126,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Mon Compte'
           ),
         ],
-        selectedItemColor: Colors.redAccent,
+        selectedItemColor: AppColors.mainColor,
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.shifting,
         currentIndex: _index,
@@ -168,7 +170,7 @@ class _HomePageState extends State<HomePage> {
       centerTitle: true,
       brightness: Brightness.dark,
       elevation: 0,
-      backgroundColor: Colors.redAccent,
+      backgroundColor: AppColors.mainColor,
       automaticallyImplyLeading: false,
       title: Text(""
           "A2iS",
